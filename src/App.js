@@ -7,6 +7,8 @@ import Vechicles from "./Containers/Vehicles/Vechicles";
 import Species from "./Containers/Species/Species";
 import Planets from "./Containers/Planets/Planets";
 import styles from "./App.module.css";
+import {BrowserRouter} from "react-router-dom";
+import {Switch, Route} from 'react-router-dom'
 
 // import counter from './counter/counter'
 
@@ -14,23 +16,28 @@ const App = () => {
 
     return (
 
+        <BrowserRouter>
+            <div className={styles.main}>
+                <Route exact path='/root' component={Root}/>
+                Resources
+                <Switch>
+                    <div>
+                        <Route exact path='/root' component={Root}/>
+                        <Route path='/people' component={People}/>
+                        <Route path='/films' component={Films}/>
+                        <Route path='/starships' component={StarShips}/>
+                        <Route path='/vechicles' component={Vechicles}/>
+                        <Route path='/species' component={Species}/>
+                        <Route path='/planets' component={Planets}/>
 
-        <div className={styles.main}>
-           Resources
-            <div>
-                <Root/>
-                <People/>
-                <Films/>
-                <StarShips/>
-                <Vechicles/>
-                <Species/>
-                <Planets/>
+                    </div>
+                </Switch>
+
             </div>
-
-        </div>
-
+        </BrowserRouter>
 
     );
 }
 
 export default App;
+
